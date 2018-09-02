@@ -315,33 +315,35 @@ int Logic (int state5) {
 			if(Death == 0x01) {
 				state5 = death;
 			}
-			for (unsigned char i = 0; i < position; i++){
-				if (LCD_pos1 == sprites[i]){
-					Death = 0x01;
-				}
-				else if ((sprites[i]-2) % 16 == 0){
-					total_score++;
-					calc_score();
-				}
-				sprites[i]--;
-				if (sprites[i] % 16 == 0){
-					for (unsigned char j = i; j < position; j++){
-						sprites[j] = sprites[j+1];
+			else {
+				for (unsigned char i = 0; i < position; i++){
+					if (LCD_pos1 == sprites[i]){
+						Death = 0x01;
 					}
-					i--;
-					position--;
-				}
-				if (sprites[i] < 33){
-					LCD_Cursor(sprites[i]); LCD_WriteData(3);
-					LCD_Cursor(sprites[i]-16); LCD_WriteData(' ');
-				}
-				else if (sprites[i] < 17){
-					LCD_Cursor(sprites[i]+1); LCD_WriteData(' ');
-					LCD_Cursor(sprites[i]); LCD_WriteData(3);
-				}
-				else {
-					LCD_Cursor(sprites[i]-16); LCD_WriteData(3);
-					LCD_Cursor(sprites[i]-15); LCD_WriteData(' ');
+					else if ((sprites[i]-2) % 16 == 0){
+						total_score++;
+						calc_score();
+					}
+					sprites[i]--;
+					if (sprites[i] % 16 == 0){
+						for (unsigned char j = i; j < position; j++){
+							sprites[j] = sprites[j+1];
+						}
+						i--;
+						position--;
+					}
+					if (sprites[i] < 33){
+						LCD_Cursor(sprites[i]); LCD_WriteData(3);
+						LCD_Cursor(sprites[i]-16); LCD_WriteData(' ');
+					}
+					else if (sprites[i] < 17){
+						LCD_Cursor(sprites[i]+1); LCD_WriteData(' ');
+						LCD_Cursor(sprites[i]); LCD_WriteData(3);
+					}
+					else {
+						LCD_Cursor(sprites[i]-16); LCD_WriteData(3);
+						LCD_Cursor(sprites[i]-15); LCD_WriteData(' ');
+					}
 				}
 			}
 
