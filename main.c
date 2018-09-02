@@ -216,7 +216,7 @@ int cannibal (int state3) {
 			state = down2;
 		}
 		else {
-			state3 = up2;
+			state3 = init4;
 		}
 		break;
 		case down2:
@@ -229,7 +229,7 @@ int cannibal (int state3) {
 			state = up2;
 		}
 		else {
-			state3 = down2;
+			state3 = init4;
 		}
 		break;
 		case charge:
